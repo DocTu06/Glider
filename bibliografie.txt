@@ -6,3 +6,5 @@ https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf
 https://www.olimex.com/Products/Breadboarding/BB-PWR-3608/resources/MT3608.pdf
 https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/
 https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/
+https://docs.flutter.dev/
+http://msabau.xhost.ro/?Fizic%E3:Dinamica_fluidelor:Legea_lui_Bernoulli
