@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -20,8 +22,8 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
   String stringResponse = 'test';
-  List<String> stringlist = ['0','0','0','0','0','0','0','0','0'];
-  List <double> valuelist = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+  List<String> stringlist = ['0','0','0','0','0','0','0','0','0','0'];
+  List <double> valuelist = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
   var color_backround = [255, 177, 93];
   bool zero = true;
 
@@ -61,20 +63,16 @@ class _homeState extends State<home> {
     return MaterialApp(
       home: Scaffold(
           body:
-          ListView(
-            scrollDirection: Axis.horizontal,
-            addAutomaticKeepAlives: false,
-            children: [
               Center(
                   child:
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(80.0,30,0,0),
+                    padding: const EdgeInsets.fromLTRB(0.0,30,10,0),
                     child: Column(
                       children: [
                         SizedBox(
                           child: Container(
-                            width: (MediaQuery.of(context).size.width)/1.7,
-                            height: (MediaQuery.of(context).size.width)/1.7,
+                            width: (MediaQuery.of(context).size.width)/1.4,
+                            height: (MediaQuery.of(context).size.width)/1.76,
                             child:
                             SfRadialGauge(
                                 axes: <RadialAxis>[
@@ -107,8 +105,8 @@ class _homeState extends State<home> {
                         ),
                         SizedBox(
                           child: Container(
-                            width: (MediaQuery.of(context).size.width)/1.7,
-                            height: (MediaQuery.of(context).size.width)/1.7,
+                            width: (MediaQuery.of(context).size.width)/1.76,
+                            height: (MediaQuery.of(context).size.width)/1.76,
                             child:
                             SfRadialGauge(
                                 axes: <RadialAxis>[
@@ -130,7 +128,7 @@ class _homeState extends State<home> {
                                         NeedlePointer(value: valuelist[1]*0.75006157584566,)],
                                       annotations: <GaugeAnnotation>[
                                         GaugeAnnotation(widget: Container(child:
-                                        Text('${(valuelist[1]*0.75006157584566).toStringAsFixed(2)} mmHg', style: TextStyle(fontSize: 20,
+                                        Text('${(valuelist[1]*0.75006157584566).toStringAsFixed(2)} mmHg', style: TextStyle(fontSize: 17,
                                             fontWeight: FontWeight.bold))),
                                             angle: 90, positionFactor: 0.8
                                         )
@@ -139,126 +137,64 @@ class _homeState extends State<home> {
                                 ]),
                           ),
                         ),
-                        Container(
-                          width: (MediaQuery.of(context).size.width)/1.73,
-                          height: (MediaQuery.of(context).size.width)/1.73,
-                          child: SfLinearGauge(
-                            minimum: 0.3,
-                            maximum: 6.2,
-                            markerPointers: [
-                              LinearShapePointer(
-                                value: valuelist[2]/1000,
-                                color: Colors.blue,
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
+                              width: (MediaQuery.of(context).size.width)/1.73,
+                              height: (MediaQuery.of(context).size.width)/1.73,
+                              child: SfLinearGauge(
+                                minimum: 0.3,
+                                maximum: 6.2,
+                                markerPointers: [
+                                  LinearShapePointer(
+                                    value: valuelist[2]/1000,
+                                    color: Colors.blue,
+                                  ),
+                                ],
+                                orientation: LinearGaugeOrientation.vertical,
                               ),
-                            ],
-                            orientation: LinearGaugeOrientation.vertical,
-                          ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 100, 0),
+                              width: (MediaQuery.of(context).size.width)/1.73,
+                              height: (MediaQuery.of(context).size.width)/1.73,
+                              child: SfLinearGauge(
+                                minimum: 0.2,
+                                maximum: 100,
+                                markerPointers: [
+                                  LinearShapePointer(
+                                    value: valuelist[9],
+                                    color: Colors.blue,
+                                  ),
+                                ],
+                                orientation: LinearGaugeOrientation.vertical,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text("Altitude",style: TextStyle(fontSize: 24),),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0,0,50,0),
+                          child: Text("Altitude(m)                 Sea level altitude(m)",style: TextStyle(fontSize: 15),),
+                        ),
+                        SizedBox(height: 5),
+                        Center(child: Text("Acceleration vector(m/s²)")),
+                        SizedBox(height: 5),
+                        SfLinearGauge(
+                          minimum: 0.0,
+                          maximum: 40,
+                          markerPointers: [
+                            LinearShapePointer(
+                              value: sqrt((valuelist[3]*valuelist[3])+(valuelist[4]*valuelist[4]) + (valuelist[5]*valuelist[5])),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   )
 
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(350,100,6,0),
-                child: SizedBox(
-                  width: (MediaQuery.of(context).size.width)/1.05,
-                  height: (MediaQuery.of(context).size.width)/1.05,
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Center(child: Text("X axis acceleration")),
-                        SizedBox(height: 20),
-                        SfLinearGauge(
-                          minimum: 0.0,
-                          maximum: 11.0,
-                          markerPointers: [
-                            LinearWidgetPointer(
-                                value: valuelist[3],
-                                child: Text("${valuelist[3]}")
-
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        Center(child: Text("Y axis acceleration")),
-                        SizedBox(height: 20),
-                        SfLinearGauge(
-                          minimum: 0.0,
-                          maximum: 11.0,
-                          markerPointers: [
-                            LinearWidgetPointer(
-                                value: valuelist[4],
-                                child: Text("${valuelist[4]}")
-
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        Center(child: Text("Z axis acceleration")),
-                        SizedBox(height: 20),
-                        SfLinearGauge(
-                          minimum: 0.0,
-                          maximum: 11.0,
-                          markerPointers: [
-                            LinearWidgetPointer(
-                                value: valuelist[5],
-                                child: Text("${valuelist[5]}")
-
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 50),
-                        Center(child: Text("Yaw")),
-                        SizedBox(height: 20),
-                        SfLinearGauge(
-                          minimum: 0.01,
-                          maximum: 2,
-                          markerPointers: [
-                            LinearWidgetPointer(
-                                value: valuelist[6],
-                                child: Text("${valuelist[6]}")
-
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        Center(child: Text("Pitch")),
-                        SizedBox(height: 20),
-                        SfLinearGauge(
-                          minimum: 0.01,
-                          maximum: 2,
-                          markerPointers: [
-                            LinearWidgetPointer(
-                                value: valuelist[7],
-                                child: Text("${valuelist[7]}")
-
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        Center(child: Text("Roll")),
-                        SizedBox(height: 20),
-                        SfLinearGauge(
-                          minimum: 0.01,
-                          maximum: 2,
-                          markerPointers: [
-                            LinearWidgetPointer(
-                                value: valuelist[8],
-                                child: Text("${valuelist[8]}")
-
-                            ),
-                          ],
-                        ),
-                      ],
-
-                    ),
-                  ),
                 ),
-              ),
-            ],
-          )),
     );
   }
 }
