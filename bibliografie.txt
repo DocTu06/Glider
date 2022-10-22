@@ -1,0 +1,8 @@
+https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf
+https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf
+https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+https://www.jahankitshop.com/getattach.aspx?id=4635&Type=Product
+https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf
+https://www.olimex.com/Products/Breadboarding/BB-PWR-3608/resources/MT3608.pdf
+https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/
+https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/
