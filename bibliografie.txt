@@ -8,3 +8,5 @@ https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/
 https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/
 https://docs.flutter.dev/
 http://msabau.xhost.ro/?Fizic%E3:Dinamica_fluidelor:Legea_lui_Bernoulli
+https://media0.webgarden.ro/files/media0:4b66de1532fb5.pdf.upl/ZBORUL%20CU%20PARAPANTA.pdf
+https://www.scribd.com/doc/144241332/37881010-Manual-Parapanta
